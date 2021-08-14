@@ -1,0 +1,26 @@
+1) Category 
+    Title = Char()
+    status = Boolean
+    
+    
+2) Question 
+    category = Fk Category
+    question = CharField()
+    answer = text field
+    status = Boolean
+    added_date = Datetime
+    
+    
+3) Comments
+    Question_id = Fk Question
+    comment = char()
+    image = ImageField()
+    added_date = Datetime()
+    
+    
+4) Voting
+    Question_id = Fk Question
+    voting = int()
+    
+    
+    
