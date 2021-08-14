@@ -124,7 +124,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+
+# Uploaded media configuration 
+# MEDIA_URL to add prefix to uploaded media files when requested
+# Example: 127.0.0.1:8000/media/file_name
 MEDIA_URL = '/media/'
+
+# MEDIA_ROOT to define a path where all the uploaded media will be stored
+# Example: PROJECT_ROOT/media
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
