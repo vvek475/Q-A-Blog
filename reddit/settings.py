@@ -122,8 +122,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+#Static files configuration
+# STATIC_URL to add prefix to static files when requested
+# Example: 127.0.0.1:8000/assets/file_name
 STATIC_URL = '/assets/'
+
+# STATIC_ROOT to define a path where all the static files will be copied
+# Example: PROJECT_ROOT/assets
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+# STATICFILES_DIRS to define a path from where static files will be copied to STATIC_ROOT 
 STATICFILES_DIRS  = [
     os.path.join(BASE_DIR, 'reddit/assets'),
 ]

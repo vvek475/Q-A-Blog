@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 
+""" Home page view function """
 def homePage(request):
     return render(request, 'home.html')
