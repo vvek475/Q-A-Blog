@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-#@u(hoqaf9q)gi+_t%_q#7py1r)^r1$9*pf07(---0o8ms-ycw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -59,7 +59,7 @@ ROOT_URLCONF = 'reddit.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,7 +122,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATIC_URL = '/assets/'
+STATICFILES_DIRS  = [
+    os.path.join(BASE_DIR, 'reddit/assets'),
+]
+
+
 
 
 # Uploaded media configuration 
@@ -134,6 +140,8 @@ MEDIA_URL = '/media/'
 # Example: PROJECT_ROOT/media
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
 
 
 # Default primary key field type

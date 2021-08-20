@@ -1,5 +1,6 @@
 from django.db import models
 from question_answer.models import Question
+from django.contrib.auth.models import User
 
 
 class Comment(models.Model):
@@ -9,7 +10,8 @@ class Comment(models.Model):
     comments = models.CharField(max_length=255)
     image = models.ImageField(upload_to='comments', null=True, blank=True)
     added_date = models.DateTimeField()
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None, null=True, blank=True)
+    
     """ 
         Return a object representation string. Model Object PK to Comment. 
         example Comment Object (1) to XYZ Comment? 
