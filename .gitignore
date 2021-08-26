@@ -19,8 +19,7 @@ db.sqlite3-journal
 /assets
 __migrations__/
 **/migrations/**
-!**/migrations
-!**/migrations/__init__.py
+
 
 # Distribution / packaging
 .Python
