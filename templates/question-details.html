@@ -24,30 +24,35 @@
                                 </ul>
                             </div>
                             <div class="post-thumb">
-                                <img class="img-responsive" src="images/blog/blog-post-1.jpg" alt="">
+                                <!--<img class="img-responsive" src="images/blog/blog-post-1.jpg" alt="">-->
                             </div>
                             
                             <div class="post-comments">
-                                {{answers}}
+                                
                                 <h3 class="post-sub-heading">10 Answers</h3>
                                 <ul class="media-list comments-list m-bot-50 clearlist">
                                     <!-- Comment Item start-->
                                     <li class="media">
                                         <a class="pull-left" href="#">
-                                            <img class="media-object comment-avatar" src="images/blog/avater-1.jpg" alt="" width="50" height="50">
+                                            <!--<img class="media-object comment-avatar" src="images/blog/avater-1.jpg" alt="" width="50" height="50">-->
                                         </a>
                                         <div class="media-body">
                                             <div class="comment-info">
                                                 <h4 class="comment-author">
                                                     <a href="#">Jonathon Andrew</a>
                                                 </h4>
-                                                <time>July 02, 2015, at 11:34</time>
-                                                <a class="comment-button" href="#"><i class="tf-ion-chatbubbles"></i>Reply</a>
+                                                <time>{{answers.added_date}}</time>
                                             </div>
-                                            <p>
-                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
-                                            </p>
-                                        
+                                            {% if answers %}
+                                                {%for answer in answers%}
+                                                <p>
+                                                {{answer.answer}} ..
+                                                <br><br><br>
+                                                </p>
+                                                {% endfor %}
+                                            {% else %}
+                                                <h3>Answer Doesn't Exist</h3>
+                                            {% endif %}
                                         </div>
                                     </li>
                                     <!-- End Comment Item -->
