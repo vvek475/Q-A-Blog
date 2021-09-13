@@ -5,7 +5,7 @@ from . models import Comment
 class CommentAdmin(admin.ModelAdmin):
     #list_display is used to add columns of model attributes to Django adminstration table view of app model
     # question, comments, added_date will displayed as table columns
-    list_display = ['question', 'comments', 'added_date']
+    list_display = ['comments', 'added_date']
 
 """
     Register App to Django Admin by passing model name as 1st parameter 

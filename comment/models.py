@@ -1,12 +1,12 @@
 from django.db import models
-from question_answer.models import Question
+from question_answer.models import Answer
 from django.contrib.auth.models import User
 
 
 class Comment(models.Model):
     """ Comment Model Class """
     # Question PK Refrence as FK because questions can have multiple comments
-    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    answer = models.ForeignKey(Answer, on_delete=models.CASCADE)
     comments = models.CharField(max_length=255)
     image = models.ImageField(upload_to='comments', null=True, blank=True)
     added_date = models.DateTimeField()

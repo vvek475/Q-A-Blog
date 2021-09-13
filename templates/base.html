@@ -61,9 +61,15 @@
 								{% for category in navigation_categories %}
 									<li><a href="{% url 'categoryQuestion' category_id=category.id %}">{{category.title}}</a></li>
 								{% endfor %}
-								<li><a href="index.html">Login</a></li>
-								<li><a href="index.html">Profile</a></li>
+								{% if request.user.is_authenticated %}
+								<li><a href="{% url 'postQuestion'%}">Post_question</a></li>
+								<li><a href="{% url 'myQuestions'%}">My_Questions</a></li>
+								<li><a href="{% url 'userProfile' %}">Profile</a></li>
 								<li><a href="index.html">Logout</a></li>
+								{% else %}
+								<li><a href="index.html">Login</a></li>
+								<li><a href="{% url 'userRegistration'%}">Registration</a></li>
+								{% endif %}
 							</ul>
 							</div><!-- /.navbar-collapse -->
 							</div><!-- /.container-fluid -->
