@@ -59,6 +59,19 @@ def QuestionDetails(request, question_id):
         'answers' : list(answers.values()),
     })
 
+def addAnswer(request):
+    if request.method=='POST':
+        Answer.objects.create(
+            question_id = request.POST['question_id'],
+            user = request.user,
+            answer = request.POST['answer'],
+            added_date =datetime.now(),
+            up_voting = 1,
+            down_vote = 1
+        )
+        messages.success(request,'answer added')
+        return redirect('QuestionDetails',question_id=request.POST['question_id'])
+        
 def SaveComment(request):
     questionid = request.POST['question_id']
     answerId=request.POST['answer_id']
@@ -93,11 +106,11 @@ def userRegistration(request):
             return redirect('userRegistration')
             
         else:
-            if password == ' ':
+            if password == '':
                 messages.error(request,'password is required')
                 print('2')
                 return redirect('userRegistration')
-            elif confirm_password == ' ':
+            elif confirm_password == '':
                 messages.error(request,'confirm_password is required')
                 print('3')
                 return redirect('userRegistration')
@@ -141,7 +154,42 @@ def userLogin(request):
         })
 
 def userProfile(request):
-    return render(request,'user-profile.html')
+    if request.method == 'POST':
+        firstName = request.POST.get('first_name')
+        lastName = request.POST.get('last_name')
+        email = request.POST.get('email')
+        mobileNo = request.POST.get('mobile_no')
+        address = request.POST.get('address')
+        password = request.POST.get('password')
+        confirmPassword = request.POST.get('confirm_password')
+        profilePicture = request.FILES.get('profile_picture')
+        userProfileObject = UserProfile.objects.get(user=request.user)
+        if password != "" and confirmPassword != "":
+            if password == confirmPassword:
+                request.user.set_password(password)
+            else:
+                messages.error(request, 'Password does not match with the confirm password')
+                return redirect('userProfile')
+        user = request.user
+        
+        userProfileObject.address = address
+        userProfileObject.profile_picture = profilePicture
+        messages.success(request, 'Profile is updated')
+        userProfileObject.save()
+        request.user.first_name = firstName
+        request.user.last_name = lastName
+        request.user.email = email
+        userProfileObject.mobile_no = mobileNo
+        request.user.save()
+        login(request, user)
+        return redirect('userProfile')
+    else:
+        navigation_categories = Category.objects.filter(status=True).order_by('-id')[:5]
+        userProfileObject,_ = UserProfile.objects.get_or_create(user=request.user)
+        return render(request, 'user-profile.html', {
+            'navigation_categories':navigation_categories,
+            'userProfile' : userProfileObject,
+        })
 
 
 def postQuestion(request):
@@ -179,4 +227,13 @@ def myQuestions(request):
     users=User.objects.get(username=user)
     questions=Question.objects.filter(user=users)
     print(questions)
-    return render(request,'my-questions.html',{'questions':questions,'users':users.username})
+    navigation_categories = Category.objects.filter(status=True).order_by('-id')[:5]
+    return render(request,'my-questions.html',{'navigation_categories':navigation_categories,'questions':questions,'users':users.username})
+
+
+from django.contrib.auth import logout
+
+def logout_view(request):  
+    logout(request)
+    messages.error(request,'User LOgged Out Successfully')
+    return redirect('homePage')
