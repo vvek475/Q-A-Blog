@@ -71,7 +71,7 @@ def addAnswer(request):
         )
         messages.success(request,'answer added')
         return redirect('QuestionDetails',question_id=request.POST['question_id'])
-        
+
 def SaveComment(request):
     questionid = request.POST['question_id']
     answerId=request.POST['answer_id']
@@ -102,24 +102,18 @@ def userRegistration(request):
         print(userName)
         if checkUsername:
             messages.error(request,'Username already taken')
-            print('1')
-            return redirect('userRegistration')
-            
+            return redirect('userRegistration')    
         else:
             if password == '':
                 messages.error(request,'password is required')
-                print('2')
                 return redirect('userRegistration')
             elif confirm_password == '':
                 messages.error(request,'confirm_password is required')
-                print('3')
                 return redirect('userRegistration')
             elif password != confirm_password:
                 messages.error(request,'password and confirm_password not saame')
-                print('4')
                 return redirect('userRegistration')
             else:
-                print('5')
                 user=User.objects.create(
                     first_name=firstname,
                     last_name=lastname,
