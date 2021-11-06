@@ -13,7 +13,7 @@ Allows logged in users to add and delete Questions, answers and Comments
 <h4>Answer page</h4>
 <img src="https://github.com/vvek475/Q-and-A-blog/blob/main/Sc/Answer%20page.jpg"><br><br>
 <h4>User profile update page</h4>
-<img src="">
+<img src="https://github.com/vvek475/Q-and-A-blog/blob/main/Sc/userProfile.jpg"><br><br>
 
 Steps to follow 
 1.  Clone repository
