@@ -1,12 +1,4 @@
-# Q&A Blog
-Q and A Blog is a Question and Answer Blog that allows logged in user to add and delete answers and comments and allows non authenticated users to surf
-Questions and answers. Token authentication has been used in this project from default Django authtoken. And also uses django message framework that allows 
-us to send one time message to users.
-
-<h2>Features</h2>
-Allows user to Surf Question and answers.<br>
-Allows logged in users to add and delete Questions, answers and Comments
-
+# reddit
 Steps to follow 
 1.  Clone repository
 
