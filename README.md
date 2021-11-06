@@ -11,7 +11,7 @@ Allows logged in users to add and delete Questions, answers and Comments
 <img src="">
 <br><br>
 <h4>Answer page</h4>
-<img src=""><br><br>
+<img src="https://github.com/vvek475/Q-and-A-blog/blob/main/Sc/Answer%20page.jpg"><br><br>
 <h4>User profile update page</h4>
 <img src="">
 
