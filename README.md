@@ -1,4 +1,4 @@
-# Q&A Blog
+# reddit
 Steps to follow 
 1.  Clone repository
 
