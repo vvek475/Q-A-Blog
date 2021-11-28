@@ -1,15 +1,12 @@
-from django.contrib.messages.api import success
-from django.db import reset_queries
-from comment.models import Comment
-from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
-from category.models import Category
-from question_answer.models import Question, Answer
-from user_profile.models import UserProfile
 from django.contrib import  messages
 from datetime import datetime
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
+from category.models import Category
+from comment.models import Comment
+from question_answer.models import Question, Answer
+from user_profile.models import UserProfile
 
 """ Home page view function """
 def homePage(request):
