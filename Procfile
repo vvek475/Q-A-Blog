@@ -1,1 +1,1 @@
-web : gunicorn reddit.wsgi
+web: gunicorn reddit.wsgi --log-file -
